@@ -5,15 +5,15 @@ import TheViewer from '../TheViewer.vue';
 
 describe('The Viewer', () => {
   let wrapper: VueWrapper<any>;
-  window.scrollTo = function(): void {};
+  window.scrollTo = function (): void {};
   beforeEach(() => {
     wrapper = shallowMount(TheViewer, {
       global: {
         mocks: {
-          window
+          window,
         },
-        stubs: ['the-character']
-      }
+        stubs: ['the-character'],
+      },
     });
   });
   it('should match the snapshot', () => {

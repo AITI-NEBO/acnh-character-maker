@@ -26,7 +26,7 @@ export default defineComponent({
   components: { ColorSelector, Slider },
   setup() {
     useMeta({
-      title: 'Hair'
+      title: 'Волосы',
     });
   },
   data() {
@@ -39,7 +39,7 @@ export default defineComponent({
         '#f3cd53',
         '#d1c888',
         '#948f90',
-        '#cfc9bc'
+        '#cfc9bc',
       ],
       hairs: [
         'smooth',
@@ -60,8 +60,8 @@ export default defineComponent({
         'somemessbun',
         'undercut',
         'brock',
-        'dino'
-      ].sort((a, b) => Number(a) - Number(b))
+        'dino',
+      ].sort((a, b) => Number(a) - Number(b)),
     };
   },
   computed: {
@@ -70,23 +70,23 @@ export default defineComponent({
     },
     currentHairColor(): string {
       return `#${this.$route.query.hairColor}`;
-    }
+    },
   },
   methods: {
     changeCurrentHair(hair: string): void {
       if (hair) {
         this.$router.replace({
-          query: { ...this.$route.query, hair }
+          query: { ...this.$route.query, hair },
         });
       }
     },
     changeCurrentHairColor(hairColor: string): void {
       if (hairColor) {
         this.$router.replace({
-          query: { ...this.$route.query, hairColor }
+          query: { ...this.$route.query, hairColor },
         });
       }
-    }
-  }
+    },
+  },
 });
 </script>

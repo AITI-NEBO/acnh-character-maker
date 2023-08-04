@@ -1562,9 +1562,7 @@
     </svg>
     <img
       class="character__clothes"
-      :src="
-        `https://res.cloudinary.com/claudiabdm/image/upload/f_auto/animal-crossing/${clothes}.png`
-      "
+      :src="`https://res.cloudinary.com/claudiabdm/image/upload/f_auto/animal-crossing/${clothes}.png`"
       width="214"
       height="169"
       :alt="clothes"
@@ -1607,13 +1605,13 @@ export default defineComponent({
     },
     clothes(): string {
       return `${this.$route.query.clothes}`;
-    }
-  }
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 
 $avatar-size: 200px;
 

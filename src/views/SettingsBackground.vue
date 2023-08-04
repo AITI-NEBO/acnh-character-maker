@@ -15,7 +15,7 @@ export default defineComponent({
   components: { ColorSelector },
   setup() {
     useMeta({
-      title: 'Background'
+      title: 'Background',
     });
   },
   data() {
@@ -32,21 +32,21 @@ export default defineComponent({
         '#5f9073',
         '#2c2b5c',
         '#8d0c0c',
-        '#ffffff'
-      ]
+        '#ffffff',
+      ],
     };
   },
   computed: {
     backgroundColor(): string {
       return `#${this.$route.query.background}`;
-    }
+    },
   },
   methods: {
     changeBackgroundColor(background: string): void {
       this.$router.replace({
-        query: { ...this.$route.query, background }
+        query: { ...this.$route.query, background },
       });
-    }
-  }
+    },
+  },
 });
 </script>

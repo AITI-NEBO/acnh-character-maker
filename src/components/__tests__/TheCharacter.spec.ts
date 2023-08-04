@@ -15,8 +15,8 @@ describe('The Character', () => {
       mouth: 'mouth-cat',
       blush: 'solid-coral',
       backgroundColor: '000',
-      clothes: 'tee-2'
-    } as { [key: string]: string }
+      clothes: 'tee-2',
+    } as { [key: string]: string },
   };
 
   let wrapper: VueWrapper<any>;
@@ -25,9 +25,9 @@ describe('The Character', () => {
     wrapper = shallowMount(TheCharacter, {
       global: {
         mocks: {
-          $route
-        }
-      }
+          $route,
+        },
+      },
     });
   });
   it('should match the snapshot', () => {
@@ -41,7 +41,7 @@ describe('The Character', () => {
       eyes: 'eyes-oval',
       nose: 'nose-oval',
       mouth: 'mouth-cat',
-      blush: 'solid-coral'
+      blush: 'solid-coral',
     } as { [key: string]: string };
     for (const key in visibleElems) {
       isElemVisible = wrapper.find(`#${visibleElems[key]}`)?.isVisible();
@@ -70,7 +70,7 @@ describe('The Character', () => {
     let matchColor = false;
     const colorElems = {
       hairColor: 'fff',
-      eyesColor: 'fff'
+      eyesColor: 'fff',
     } as { [key: string]: string };
 
     for (const key in colorElems) {

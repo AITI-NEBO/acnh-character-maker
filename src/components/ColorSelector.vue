@@ -5,7 +5,7 @@
         @click="changeColor(color)"
         :class="[
           'colors__color',
-          { 'colors__color--tick': currentColor === color }
+          { 'colors__color--tick': currentColor === color },
         ]"
         viewBox="0 0 85 85"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +23,8 @@
         :class="[
           'colors__color-tick',
           {
-            'colors__color-tick--active': currentColor === color
-          }
+            'colors__color-tick--active': currentColor === color,
+          },
         ]"
         viewBox="0 0 65 65"
         :data-test="`color-tick-${color}`"
@@ -63,29 +63,29 @@ export default defineComponent({
   props: {
     colors: {
       type: Array,
-      required: true
+      required: true,
     },
     selectedColor: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     currentColor(): string {
       return this.selectedColor;
-    }
+    },
   },
   methods: {
     changeColor(color: string) {
       this.$emit('colorChanged', color.slice(1));
-    }
-  }
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 
 .colors {
   width: 100%;
@@ -127,7 +127,8 @@ export default defineComponent({
     transform: translate3d(rem(-26px), 0, 0);
     z-index: 2;
     opacity: 0;
-    transition: width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transition:
+      width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       height 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &--active {
       @include size(rem(26px));

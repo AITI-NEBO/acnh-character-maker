@@ -2,28 +2,21 @@
   <section class="viewer">
     <section class="viewer__credit">
       <p>
-        Developed with ♥️ by
-        <a class="viewer__credit-link" href="https://github.com/claudiabdm">
-          Claudia Benito
+        Сделано в
+        <a class="viewer__credit-link" href="https://nebo.me">
+          IT-NEBO
         </a>
       </p>
     </section>
     <div class="viewer__avatar">
       <the-character></the-character>
     </div>
-    <section class="viewer__credit">
-      <p>
-        Character design by
-        <a
-          class="viewer__credit-link"
-          href="https://www.figma.com/community/file/834210307944210537/Animal-Crossing-Character-Maker"
-        >
-          Ace S Chen
-        </a>
-      </p>
-    </section>
+
     <button class="btn" type="button" @click="downloadSVGAsPNG">
       {{ downloadText }}
+    </button>
+    <button class="btn" type="button" @click="setAvatarBitrix">
+      Установить аватар в Битрикс24
     </button>
   </section>
 </template>
@@ -36,29 +29,51 @@ export default defineComponent({
   components: { TheCharacter },
   data() {
     return {
-      downloadText: 'Download Image'
+      downloadText: 'Скачать аватар',
     };
   },
   methods: {
     downloadSVGAsPNG() {
       window.scrollTo({
-        top: 0
+        top: 0,
       });
-      this.downloadText = 'Loading...';
+      this.downloadText = 'Загрузка...';
       const svg = document.getElementsByClassName(
-        'viewer__avatar'
+        'viewer__avatar',
       )[0] as HTMLElement;
       if (svg == null) return;
-      import('html2canvas').then(module => {
+      import('html2canvas').then((module) => {
         const html2canvas = module.default;
         html2canvas(svg, {
           foreignObjectRendering: false,
           allowTaint: true,
           useCORS: true,
-          scale: svg.clientWidth < 300 ? 3 : 1
-        }).then(canvas => {
+          scale: svg.clientWidth < 300 ? 3 : 1,
+        }).then((canvas) => {
           this.downloadCanvas(canvas);
-          this.downloadText = 'Download Image';
+          this.downloadText = 'Скачать аватар';
+        });
+      });
+    },
+    setAvatarBitrix() {
+      window.scrollTo({
+        top: 0,
+      });
+      this.downloadText = 'Загрузка...';
+      const svg = document.getElementsByClassName(
+          'viewer__avatar',
+      )[0] as HTMLElement;
+      if (svg == null) return;
+      import('html2canvas').then((module) => {
+        const html2canvas = module.default;
+        html2canvas(svg, {
+          foreignObjectRendering: false,
+          allowTaint: true,
+          useCORS: true,
+          scale: svg.clientWidth < 300 ? 3 : 1,
+        }).then((canvas) => {
+          this.downloadCanvas(canvas);
+          this.downloadText = 'Скачать аватар';
         });
       });
     },
@@ -70,14 +85,14 @@ export default defineComponent({
       a.download = 'ac-avatar.png';
       a.href = dataURL;
       a.dispatchEvent(myEvt);
-    }
-  }
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 
 .viewer {
   @include flex(center, center, column);

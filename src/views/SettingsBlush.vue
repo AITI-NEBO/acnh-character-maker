@@ -20,29 +20,29 @@ export default defineComponent({
   components: { Slider },
   setup() {
     useMeta({
-      title: 'Blush'
+      title: 'Blush',
     });
   },
   data() {
     return {
       blushes: ['soft-coral', 'soft-pink', 'solid-coral', 'solid-pink'].sort(
-        (a, b) => Number(a) - Number(b)
-      )
+        (a, b) => Number(a) - Number(b),
+      ),
     };
   },
   computed: {
     currentBlush(): string {
       return `${this.$route.query.blush}`;
-    }
+    },
   },
   methods: {
     changeCurrentBlush(blush: string): void {
       if (blush) {
         this.$router.replace({
-          query: { ...this.$route.query, blush }
+          query: { ...this.$route.query, blush },
         });
       }
-    }
-  }
+    },
+  },
 });
 </script>

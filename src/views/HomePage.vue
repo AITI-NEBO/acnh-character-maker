@@ -10,16 +10,16 @@ import TheSettings from '@/components/TheSettings.vue';
 import { useMeta } from 'vue-meta';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'HomePage',
   components: { TheViewer, TheSettings },
   setup() {
     useMeta({
-      title: 'Home'
+      title: 'HomePage',
     });
   },
   data() {
     return {
-      downloadText: 'Download Image'
+      downloadText: 'Скачать аватар',
     };
   },
   mounted() {
@@ -34,16 +34,16 @@ export default defineComponent({
         mouth: this.$route.query.mouth || 'laugh',
         blush: this.$route.query.blush || 'solid-pink',
         background: this.$route.query.background || '5a5a5a',
-        clothes: this.$route.query.clothes || 'tee-6'
-      }
+        clothes: this.$route.query.clothes || 'tee-6',
+      },
     });
-  }
+  },
 });
 </script>
 
 <style lang="scss">
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 
 .btn {
   width: 100%;

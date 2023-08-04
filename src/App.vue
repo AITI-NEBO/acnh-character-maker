@@ -1,7 +1,7 @@
 <template>
   <metainfo>
     <template v-slot:title="{ content }">{{
-      content ? `${content} | AC: Character Maker` : 'AC: Character Maker'
+      content ? `${content} | AC: Character Maker` : "AC: Character Maker"
     }}</template>
   </metainfo>
   <main class="main">
@@ -20,21 +20,21 @@ export default defineComponent({
 
     useMeta({
       'mobile-web-app-capable': {
-        title
+        title,
       },
       'apple-mobile-web-app-title': {
-        title
+        title,
       },
       htmlAttrs: {
-        lang: 'en'
-      }
+        lang: 'en',
+      },
     });
-  }
+  },
 });
 </script>
 
 <style lang="scss">
-@import '@/styles/styles.scss';
+@import "@/styles/styles.scss";
 html {
   background-color: var(--primary-100);
   font-size: 14px;
@@ -45,7 +45,7 @@ html {
 
 #app {
   @include size(100%, 100%);
-  background-image: url('https://res.cloudinary.com/claudiabdm/image/upload/v1623082404/animal-crossing/newhorizons_wallpaper_CharEditor.png');
+  background-image: url("https://res.cloudinary.com/claudiabdm/image/upload/v1623082404/animal-crossing/newhorizons_wallpaper_CharEditor.png");
   font-family: $font-primary;
   overflow: hidden;
 }

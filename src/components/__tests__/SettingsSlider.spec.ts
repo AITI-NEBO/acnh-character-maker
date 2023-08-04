@@ -15,7 +15,7 @@ describe('The Settings Slider', () => {
     'smilinglash',
     'smiling',
     'zzz',
-    'lookatme'
+    'lookatme',
   ];
   const elemType = 'eyes';
   const currentElem = 'eyes-oval';
@@ -25,7 +25,7 @@ describe('The Settings Slider', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(SettingsSlider, {
-      props: { elemList, elemType, currentElem, currentElemColor }
+      props: { elemList, elemType, currentElem, currentElemColor },
     });
   });
   it('should match the snapshot', () => {
@@ -79,16 +79,16 @@ describe('The Settings Slider', () => {
       scrollLeft: 0,
       clientWidth: 100,
       scrollWidth: 300,
-      scrollBy: function({
+      scrollBy: function ({
         left,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        behavior
+        behavior,
       }: {
         left: number;
         behavior: string;
       }): void {
         this.scrollLeft = left;
-      }
+      },
     };
     wrapper.vm.changeScrollPosition(sliderScrollEl, offset);
     expect(sliderScrollEl.scrollLeft).toEqual(50);
@@ -100,16 +100,16 @@ describe('The Settings Slider', () => {
       scrollLeft: 0,
       clientWidth: 300,
       scrollWidth: 300,
-      scrollBy: function({
+      scrollBy: function ({
         left,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        behavior
+        behavior,
       }: {
         left: number;
         behavior: string;
       }): void {
         this.scrollLeft = left;
-      }
+      },
     };
     wrapper.vm.changeScrollPosition(sliderScrollEl, offset);
     expect(sliderScrollEl.scrollLeft).toEqual(0);
@@ -125,8 +125,8 @@ describe('The Settings Slider', () => {
     const e = {
       target: {
         clientWidth: 100,
-        scrollWidth: 100
-      }
+        scrollWidth: 100,
+      },
     };
     wrapper.vm.setButtonVisibility(e);
     expect(wrapper.vm.isPrevVisible).toBe(false);
@@ -139,8 +139,8 @@ describe('The Settings Slider', () => {
       target: {
         scrollLeft: 0,
         clientWidth: 100,
-        scrollWidth: 300
-      }
+        scrollWidth: 300,
+      },
     };
     wrapper.vm.setButtonVisibility(e);
     expect(wrapper.vm.isPrevVisible).toBe(false);
@@ -153,8 +153,8 @@ describe('The Settings Slider', () => {
       target: {
         scrollLeft: 250,
         clientWidth: 100,
-        scrollWidth: 300
-      }
+        scrollWidth: 300,
+      },
     };
     wrapper.vm.setButtonVisibility(e);
     expect(wrapper.vm.isPrevVisible).toBe(true);
@@ -167,8 +167,8 @@ describe('The Settings Slider', () => {
       target: {
         scrollLeft: 60,
         clientWidth: 100,
-        scrollWidth: 300
-      }
+        scrollWidth: 300,
+      },
     };
     wrapper.vm.setButtonVisibility(e);
     expect(wrapper.vm.isPrevVisible).toBe(true);
@@ -181,8 +181,8 @@ describe('The Settings Slider', () => {
       target: {
         scrollLeft: 60,
         clientWidth: 100,
-        scrollWidth: 300
-      }
+        scrollWidth: 300,
+      },
     };
     wrapper.vm.setButtonVisibility(e);
     expect(wrapper.vm.isPrevVisible).toBe(true);

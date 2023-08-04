@@ -15,7 +15,7 @@ export default defineComponent({
   components: { ColorSelector },
   setup() {
     useMeta({
-      title: 'Skin'
+      title: 'Кожа',
     });
   },
   data() {
@@ -28,21 +28,21 @@ export default defineComponent({
         '#fbb985',
         '#f0a06f',
         '#d0784e',
-        '#84401a'
-      ]
+        '#84401a',
+      ],
     };
   },
   computed: {
     skinColor(): string {
       return `#${this.$route.query.skin}`;
-    }
+    },
   },
   methods: {
     changeSkinColor(skin: string): void {
       this.$router.replace({
-        query: { ...this.$route.query, skin }
+        query: { ...this.$route.query, skin },
       });
-    }
-  }
+    },
+  },
 });
 </script>

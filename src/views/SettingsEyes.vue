@@ -25,7 +25,7 @@ export default defineComponent({
   components: { ColorSelector, Slider },
   setup() {
     useMeta({
-      title: 'Eyes'
+      title: 'Eyes',
     });
   },
   data() {
@@ -36,7 +36,7 @@ export default defineComponent({
         '#8c501d',
         '#275976',
         '#3a5c3e',
-        '#bab4b4'
+        '#bab4b4',
       ],
       eyes: [
         'zzzlashes',
@@ -58,8 +58,8 @@ export default defineComponent({
         'kind',
         'sideeye',
         'kindlash',
-        'eyes-cat'
-      ].sort((a, b) => Number(a) - Number(b))
+        'eyes-cat',
+      ].sort((a, b) => Number(a) - Number(b)),
     };
   },
   computed: {
@@ -68,23 +68,23 @@ export default defineComponent({
     },
     currentEyesColor(): string {
       return `#${this.$route.query.eyesColor}`;
-    }
+    },
   },
   methods: {
     changeCurrentEyes(eyes: string): void {
       if (eyes) {
         this.$router.replace({
-          query: { ...this.$route.query, eyes }
+          query: { ...this.$route.query, eyes },
         });
       }
     },
     changeCurrentEyesColor(eyesColor: string): void {
       if (eyesColor) {
         this.$router.replace({
-          query: { ...this.$route.query, eyesColor }
+          query: { ...this.$route.query, eyesColor },
         });
       }
-    }
-  }
+    },
+  },
 });
 </script>

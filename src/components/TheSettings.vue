@@ -4,11 +4,11 @@
       <div
         :class="[
           'settings__link-wrapper',
-          { 'settings__link-wrapper--active': selectedTab === icon }
+          { 'settings__link-wrapper--active': selectedTab === icon },
         ]"
-        v-for="icon in icons"
+        v-for="(icon,index) in icons"
         :key="icon"
-        :aria-label="icon === 'nose-mouth' ? icon.replace('-', ' / ') : icon"
+        :aria-label="iconsRU[index] === 'nose-mouth' ? iconsRU[index].replace('-', ' / ') : iconsRU[index]"
         @click="onSelectTab(icon)"
       >
         <router-link
@@ -43,9 +43,18 @@ export default defineComponent({
         'nose-mouth',
         'blush',
         'background',
-        'clothes'
+        'clothes',
       ],
-      selectedTab: 'skin'
+      iconsRU:[
+        'кожа',
+        'волосы',
+        'глаза',
+        'нос/рот',
+        'румянец',
+        'фон',
+        'одежда',
+      ],
+      selectedTab: 'skin',
     };
   },
   watch: {
@@ -54,7 +63,7 @@ export default defineComponent({
       if (this.selectedTab !== to.name) {
         this.onSelectTab(to.name);
       }
-    }
+    },
   },
   methods: {
     iconPath(icon: string): string {
@@ -62,14 +71,14 @@ export default defineComponent({
     },
     onSelectTab(icon: string): void {
       this.selectedTab = icon;
-    }
-  }
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 
 .settings {
   @include size(100%, 100%);
@@ -102,7 +111,7 @@ export default defineComponent({
     margin-left: -10px;
     padding: 0;
     &::before {
-      content: '';
+      content: "";
       @include size(0, 0);
       opacity: 0;
       position: absolute;
@@ -118,7 +127,7 @@ export default defineComponent({
       &::before {
         @include size(max-content, auto);
         @include flex(center, center);
-        content: '   ' attr(aria-label) '   ';
+        content: "   " attr(aria-label) "   ";
         background-color: var(--tertiary-100);
         color: var(--tertiary-200);
         padding: rem(5px) 0;

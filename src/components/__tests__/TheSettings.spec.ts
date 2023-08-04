@@ -16,8 +16,8 @@ describe('The Settings', () => {
       mouth: 'mouth-cat',
       blush: 'solid-coral',
       backgroundColor: '000',
-      clothes: 'tee-2'
-    } as { [key: string]: string }
+      clothes: 'tee-2',
+    } as { [key: string]: string },
   };
 
   let wrapper: VueWrapper<any>;
@@ -26,10 +26,10 @@ describe('The Settings', () => {
     wrapper = shallowMount(TheSettings, {
       global: {
         mocks: {
-          $route
+          $route,
         },
-        stubs: ['router-link', 'router-view']
-      }
+        stubs: ['router-link', 'router-view'],
+      },
     });
   });
   it('should match the snapshot', () => {
@@ -48,22 +48,22 @@ describe('The Settings', () => {
               path: '/skin',
               name: 'skin',
               component: {
-                template: 'skin'
-              }
+                template: 'skin',
+              },
             },
             {
               path: '/eyes',
               name: 'eyes',
               component: {
-                template: 'eyes'
-              }
-            }
-          ]
-        }
-      ]
+                template: 'eyes',
+              },
+            },
+          ],
+        },
+      ],
     });
     const wrapperRouter = shallowMount(TheSettings, {
-      global: { plugins: [router] }
+      global: { plugins: [router] },
     });
     router.push('/skin');
     await router.isReady();

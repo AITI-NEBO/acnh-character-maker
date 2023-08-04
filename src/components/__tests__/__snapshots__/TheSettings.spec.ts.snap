@@ -8,9 +8,9 @@ exports[`The Settings should match the snapshot 1`] = `
     aria-label="Settings options"
     class="settings__buttons"
   >
-    
+
     <div
-      aria-label="skin"
+      aria-label="Кожа"
       class="settings__link-wrapper settings__link-wrapper--active"
     >
       <router-link-stub
@@ -19,7 +19,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="hair"
+      aria-label="Волосы"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -28,7 +28,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="eyes"
+      aria-label="Глаза"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -37,7 +37,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="nose / mouth"
+      aria-label="Нос / Рот"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -46,7 +46,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="blush"
+      aria-label="Румянец"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -55,7 +55,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="background"
+      aria-label="Фон"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -64,7 +64,7 @@ exports[`The Settings should match the snapshot 1`] = `
       />
     </div>
     <div
-      aria-label="clothes"
+      aria-label="Одежда"
       class="settings__link-wrapper"
     >
       <router-link-stub
@@ -72,7 +72,7 @@ exports[`The Settings should match the snapshot 1`] = `
         to="[object Object]"
       />
     </div>
-    
+
   </nav>
   <div
     class="settings__options"

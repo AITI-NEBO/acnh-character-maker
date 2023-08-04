@@ -9,7 +9,7 @@ describe('The Color Selector', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(ColorSelector, {
-      props: { colors, selectedColor }
+      props: { colors, selectedColor },
     });
   });
   it('should match the snapshot', () => {
@@ -22,7 +22,7 @@ describe('The Color Selector', () => {
 
   it('should change currentColor when selectedColor prop changes', async () => {
     await wrapper.setProps({
-      selectedColor: '#000'
+      selectedColor: '#000',
     });
     expect(wrapper.vm.currentColor).toEqual('#000');
   });
@@ -35,7 +35,7 @@ describe('The Color Selector', () => {
 
   it('should have tick is color selected', async () => {
     await wrapper.setProps({
-      selectedColor: '#000'
+      selectedColor: '#000',
     });
     const selected = wrapper
       .find('[data-test="color-tick-#000"]')

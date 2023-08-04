@@ -34,7 +34,7 @@
             type="button"
             :class="[
               'slider__elem-btn',
-              { 'slider__elem-btn--tick': currentElem === elem }
+              { 'slider__elem-btn--tick': currentElem === elem },
             ]"
             @click="changeCurrentElem(elem)"
             :data-test="`select-elem-${elem}`"
@@ -52,8 +52,8 @@
             :class="[
               'slider__elem-tick',
               {
-                'slider__elem-tick--active': currentElem === elem
-              }
+                'slider__elem-tick--active': currentElem === elem,
+              },
             ]"
             viewBox="0 0 65 65"
           >
@@ -116,7 +116,8 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  data() {
+  // eslint-disable-next-line
+  data():{ offset: number; isPrevVisible: boolean; sliderScrollEl: Element; interval: any; position: number; isNextVisible: boolean; isRow: boolean } {
     return {
       sliderScrollEl: this.$refs.sliderScroll as Element,
       interval: 0,
@@ -124,40 +125,46 @@ export default defineComponent({
       isPrevVisible: false,
       isNextVisible: true,
       offset: 50,
-      isRow: false
+      isRow: false,
     };
   },
+
   mounted() {
+    // eslint-disable-next-line vue/valid-next-tick
     this.$nextTick();
     this.sliderScrollEl = this.$refs.sliderScroll as Element;
-    this.setButtonVisibility(({
-      target: this.sliderScrollEl
-    } as unknown) as Event);
+    this.setButtonVisibility({
+      target: this.sliderScrollEl,
+    } as unknown as Event);
     this.sliderScrollEl.addEventListener('scroll', this.setButtonVisibility);
   },
   props: {
     elemList: {
       type: Array,
-      required: true
+      required: true,
     },
     elemType: {
       type: String as () => 'hairs' | 'eyes',
-      required: true
+      required: true,
     },
     currentElem: {
       type: String,
-      required: true
+      required: true,
     },
     currentElemColor: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     onNext(): void {
       if (!this.interval) {
         this.interval = setInterval(
-          this.changeScrollPosition.bind(null, this.sliderScrollEl, this.offset)
+          this.changeScrollPosition.bind(
+            null,
+            this.sliderScrollEl,
+            this.offset,
+          ),
         );
       }
     },
@@ -167,8 +174,8 @@ export default defineComponent({
           this.changeScrollPosition.bind(
             null,
             this.sliderScrollEl,
-            -this.offset
-          )
+            -this.offset,
+          ),
         );
       }
     },
@@ -178,7 +185,7 @@ export default defineComponent({
       if (scrollPosition < scrollElement.scrollWidth) {
         scrollElement.scrollBy({
           left: offset,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     },
@@ -212,14 +219,14 @@ export default defineComponent({
     },
     changeCurrentElem(elem: string) {
       this.$emit('elemSelected', elem);
-    }
-  }
+    },
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 .slider {
   position: relative;
   padding: rem(10px) rem(50px);
@@ -295,7 +302,7 @@ export default defineComponent({
     justify-content: center;
     &::before {
       @include size(100%, 100%);
-      content: '';
+      content: "";
       position: absolute;
       display: block;
       border-radius: 30%;
@@ -336,7 +343,8 @@ export default defineComponent({
     right: rem(-5px);
     z-index: 2;
     opacity: 0;
-    transition: width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transition:
+      width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       height 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &--active {
       @include size(rem(26px));

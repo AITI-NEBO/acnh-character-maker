@@ -33,20 +33,20 @@ export default defineComponent({
   components: { Slider },
   setup() {
     useMeta({
-      title: 'NoseMouth'
+      title: 'NoseMouth',
     });
   },
   data() {
     return {
       noses: ['nose-circle', 'nose-oval', 'rectangle', 'triangle'].sort(
-        (a, b) => Number(a) - Number(b)
+        (a, b) => Number(a) - Number(b),
       ),
       mouths1: ['laugh', 'small', 'surprise', 'wide'].sort(
-        (a, b) => Number(a) - Number(b)
+        (a, b) => Number(a) - Number(b),
       ),
       mouths2: ['bunny', 'mouth-cat', 'droll', 'kissy'].sort(
-        (a, b) => Number(a) - Number(b)
-      )
+        (a, b) => Number(a) - Number(b),
+      ),
     };
   },
   computed: {
@@ -55,23 +55,23 @@ export default defineComponent({
     },
     currentMouth(): string {
       return `${this.$route.query.mouth}`;
-    }
+    },
   },
   methods: {
     changeCurrentNose(nose: string): void {
       if (nose) {
         this.$router.replace({
-          query: { ...this.$route.query, nose }
+          query: { ...this.$route.query, nose },
         });
       }
     },
     changeCurrentMouth(mouth: string): void {
       if (mouth) {
         this.$router.replace({
-          query: { ...this.$route.query, mouth }
+          query: { ...this.$route.query, mouth },
         });
       }
-    }
-  }
+    },
+  },
 });
 </script>

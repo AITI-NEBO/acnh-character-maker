@@ -4,16 +4,14 @@
       <button
         :class="[
           'clothes__elem-img',
-          { 'clothes__elem-img--tick': currentClothes === elem }
+          { 'clothes__elem-img--tick': currentClothes === elem },
         ]"
         :aria-label="`Select ${elem}`"
         type="button"
         @click="changeCurrentClothes(elem)"
       >
         <img
-          :src="
-            `https://res.cloudinary.com/claudiabdm/image/upload/f_auto/animal-crossing/${elem}`
-          "
+          :src="`https://res.cloudinary.com/claudiabdm/image/upload/f_auto/animal-crossing/${elem}`"
           width="230"
           height="169"
           :alt="elem"
@@ -23,8 +21,8 @@
         :class="[
           'clothes__elem-tick',
           {
-            'clothes__elem-tick--active': currentClothes === elem
-          }
+            'clothes__elem-tick--active': currentClothes === elem,
+          },
         ]"
         viewBox="0 0 65 65"
       >
@@ -61,7 +59,7 @@ import { useMeta } from 'vue-meta';
 export default defineComponent({
   setup() {
     useMeta({
-      title: 'Clothes'
+      title: 'Clothes',
     });
   },
   data() {
@@ -77,7 +75,7 @@ export default defineComponent({
         'tee-7',
         'tee-8',
         'tee-9',
-        'tee-10'
+        'tee-10',
       ],
       cropTops: [
         'crop-top-2',
@@ -88,7 +86,7 @@ export default defineComponent({
         'crop-top-7',
         'crop-top-8',
         'crop-top-9',
-        'crop-top-10'
+        'crop-top-10',
       ],
       longSleeves: [
         'long-sleeve-2',
@@ -99,7 +97,7 @@ export default defineComponent({
         'long-sleeve-7',
         'long-sleeve-8',
         'long-sleeve-9',
-        'long-sleeve-10'
+        'long-sleeve-10',
       ],
       sleeveless: [
         'sleeveless-2',
@@ -110,7 +108,7 @@ export default defineComponent({
         'sleeveless-7',
         'sleeveless-8',
         'sleeveless-9',
-        'sleeveless-10'
+        'sleeveless-10',
       ],
       puffySleeves: [
         'puffy-sleeve-2',
@@ -121,7 +119,7 @@ export default defineComponent({
         'puffy-sleeve-7',
         'puffy-sleeve-8',
         'puffy-sleeve-9',
-        'puffy-sleeve-10'
+        'puffy-sleeve-10',
       ],
       cupcakeDresses: [
         'cupcake-dress-2',
@@ -129,7 +127,7 @@ export default defineComponent({
         'cupcake-dress-4',
         'cupcake-dress-5',
         'cupcake-dress-6',
-        'cupcake-dress-7'
+        'cupcake-dress-7',
       ],
       sweaters: [
         'a-color',
@@ -141,8 +139,8 @@ export default defineComponent({
         'argyle',
         'hoodie-tee',
         'blooming-day',
-        'private-school'
-      ]
+        'private-school',
+      ],
     };
   },
   mounted() {
@@ -153,7 +151,7 @@ export default defineComponent({
       ...this.sleeveless,
       ...this.puffySleeves,
       ...this.cupcakeDresses,
-      ...this.sweaters
+      ...this.sweaters,
     ];
   },
   unmounted() {
@@ -162,22 +160,22 @@ export default defineComponent({
   computed: {
     currentClothes(): string {
       return `${this.$route.query.clothes}`;
-    }
+    },
   },
   methods: {
     changeCurrentClothes(clothes: string): void {
       if (clothes) {
         this.$router.replace({
-          query: { ...this.$route.query, clothes }
+          query: { ...this.$route.query, clothes },
         });
       }
-    }
-  }
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
-@import '@/styles/global/_variables.scss';
-@import '@/styles/mixins/_mixins.scss';
+@import "@/styles/global/_variables.scss";
+@import "@/styles/mixins/_mixins.scss";
 .clothes {
   @include size(100%, 100%);
   display: grid;
@@ -202,7 +200,7 @@ export default defineComponent({
 
     &::before {
       @include size(100%, 100%);
-      content: '';
+      content: "";
       position: absolute;
       border-radius: 30%;
       border: rem(3px) solid transparent;
@@ -230,7 +228,8 @@ export default defineComponent({
     right: rem(-5px);
     z-index: 2;
     opacity: 0;
-    transition: width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transition:
+      width 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       height 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &--active {
       @include size(rem(26px));
