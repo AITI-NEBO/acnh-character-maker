@@ -61,6 +61,9 @@ export default defineComponent({
     cursor: pointer;
     background-color: var(--secondary-200);
   }
+  &:disabled {
+    opacity: 0.4;
+  }
   @media screen and (min-width: 1024px) {
     width: rem(300px);
     padding: rem(20px);

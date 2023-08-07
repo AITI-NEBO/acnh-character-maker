@@ -1618,13 +1618,12 @@ $avatar-size: 200px;
 .character {
   position: relative;
   display: flex;
-  border: rem(15px) solid #fff;
   border-radius: rem(20px);
   background-color: #fff;
   overflow: hidden;
 
   @media screen and (min-width: 1024px) {
-    border-width: rem(20px);
+
   }
 
   &__svg {

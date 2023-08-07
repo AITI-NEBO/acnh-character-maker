@@ -59,7 +59,7 @@ import { useMeta } from 'vue-meta';
 export default defineComponent({
   setup() {
     useMeta({
-      title: 'Clothes',
+      title: 'Одежда',
     });
   },
   data() {

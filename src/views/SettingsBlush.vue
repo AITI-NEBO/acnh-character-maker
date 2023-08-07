@@ -20,7 +20,7 @@ export default defineComponent({
   components: { Slider },
   setup() {
     useMeta({
-      title: 'Blush',
+      title: 'Румянец',
     });
   },
   data() {

@@ -15,7 +15,7 @@ export default defineComponent({
   components: { ColorSelector },
   setup() {
     useMeta({
-      title: 'Background',
+      title: 'Фон',
     });
   },
   data() {

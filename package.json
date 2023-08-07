@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@sknebo/ad-integrator": "github:sknebo/ad-integrator",
     "@sknebo/bitrix-js": "github:sknebo/bitrix-js",
     "core-js": "^3.32.0",
     "html2canvas": "^1.4.1",

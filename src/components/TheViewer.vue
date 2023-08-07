@@ -15,22 +15,57 @@
     <button class="btn" type="button" @click="downloadSVGAsPNG">
       {{ downloadText }}
     </button>
-    <button class="btn" type="button" @click="setAvatarBitrix">
-      Установить аватар в Битрикс24
+    <button class="btn" type="button" :disabled="!bitrixToken" @click="setAvatarBitrix">
+
+      {{setAvatarText}}
     </button>
+    <div v-if="errorMessage" style="color: #ff4757;position: relative; top: 20px;margin-bottom: 15px">
+      {{ errorMessage }}
+    </div>
+    <div v-if="successMessage" style="background-color: #61bc4e;color: #c3e88d;position: relative; top: 20px;margin-bottom: 15px">
+      {{ successMessage }}
+    </div>
+
+
+    <div class="ad" data-type="banner" data-width="100%" data-orientation="horizontal"></div>
+
   </section>
+
 </template>
 
 <script lang="ts">
+/* eslint-disable */
 import { defineComponent } from 'vue';
 import TheCharacter from '@/components/TheCharacter.vue';
+import bitrix from "@/utils/bitrixLogin";
+import {Method} from "@sknebo/bitrix-js";
 
 export default defineComponent({
   components: { TheCharacter },
   data() {
     return {
       downloadText: 'Скачать аватар',
+      errorMessage:'',
+      successMessage:'',
+      setAvatar:false,
+      setAvatarText: 'Установить аватар в Битрикс24',
+      setAD:true,
+      bitrixToken:true,
     };
+  },
+  async beforeMount  () {
+    await bitrix.call('app.info' as Method, {}).then((response: any) => {
+      if (response.result.STATUS === 'L') {
+        this.setAD =false
+      }
+      if (response.result.STATUS === 'F') {
+        this.setAD=true
+      }
+    }).catch((e:any)=>{
+      this.errorMessage=e
+      this.bitrixToken = false
+    })
+
   },
   methods: {
     downloadSVGAsPNG() {
@@ -48,7 +83,7 @@ export default defineComponent({
           foreignObjectRendering: false,
           allowTaint: true,
           useCORS: true,
-          scale: svg.clientWidth < 300 ? 3 : 1,
+
         }).then((canvas) => {
           this.downloadCanvas(canvas);
           this.downloadText = 'Скачать аватар';
@@ -59,7 +94,7 @@ export default defineComponent({
       window.scrollTo({
         top: 0,
       });
-      this.downloadText = 'Загрузка...';
+      this.setAvatarText = 'Загрузка...';
       const svg = document.getElementsByClassName(
           'viewer__avatar',
       )[0] as HTMLElement;
@@ -70,10 +105,33 @@ export default defineComponent({
           foreignObjectRendering: false,
           allowTaint: true,
           useCORS: true,
-          scale: svg.clientWidth < 300 ? 3 : 1,
+          backgroundColor: null
+
         }).then((canvas) => {
-          this.downloadCanvas(canvas);
-          this.downloadText = 'Скачать аватар';
+          const dataURL = canvas.toDataURL('image/png')
+          bitrix.call('profile' as Method, {}).then((response: any) => {
+            const userData = {
+              ID: response.result.ID,
+              PERSONAL_PHOTO: [
+                `avatarCrossing.png`,
+                `${dataURL}`.split('base64,')[1],
+              ],
+            }
+            bitrix
+                .call('user.update', userData)
+                .then((response:any) => {
+                  if (response.result) {
+                    this.successMessage = 'Аватар успешно установлен!'
+                    this.setAvatarText = 'Установить аватар в Битрикс24'
+                  }
+                })
+                .catch((error:any) => {
+                  this.errorMessage = 'Ошибка при обновлении аватара пользователя'
+                  this.setAvatarText = 'Установить аватар в Битрикс24'
+                })
+          }).catch((e:any)=>{
+            this.errorMessage=e
+          })
         });
       });
     },
@@ -95,6 +153,7 @@ export default defineComponent({
 @import "@/styles/mixins/_mixins.scss";
 
 .viewer {
+
   @include flex(center, center, column);
   margin: rem(20px);
   @media screen and (min-width: 1024px) {
@@ -109,4 +168,5 @@ export default defineComponent({
     color: var(--accent-200);
   }
 }
+
 </style>

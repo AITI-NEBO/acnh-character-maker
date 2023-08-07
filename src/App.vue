@@ -26,7 +26,7 @@ export default defineComponent({
         title,
       },
       htmlAttrs: {
-        lang: 'en',
+        lang: 'ru',
       },
     });
   },

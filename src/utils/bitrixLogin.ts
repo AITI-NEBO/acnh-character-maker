@@ -1,25 +1,18 @@
+/* eslint-disable */
 import BitrixJS, {
   BitrixConfig,
   ModeConfig,
 } from "@sknebo/bitrix-js";
-let bitrix:any
-
-
 
 const config = {
-  client_id: 'app.64c370a00c6b53.62788568',
-  client_secret: 'Zg11iJmXQ4pT9DMvINLOSgpGZ4EAMPwJZ9cng0H7VmzbjcuWAf',
+  client_id: 'local.64cd1de22421e0.79569357',
+  client_secret: 'aCTQUYZLKDTd80kvSGe2sMDlSlskw4J175pU7LNhKILCWKxAXL',
 };
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 
 const domain = urlParams.get('DOMAIN') || '';
-bitrix = BitrixJS({
-  mode: ModeConfig.OAuth,
-  ...config,
-  domain,
-  https: true,
-})
+let bitrix:any
 
 const tokens = {
   refresh_token: urlParams.get('REFRESH_ID') || '',

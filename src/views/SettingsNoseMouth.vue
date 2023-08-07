@@ -33,7 +33,7 @@ export default defineComponent({
   components: { Slider },
   setup() {
     useMeta({
-      title: 'NoseMouth',
+      title: 'НосРот',
     });
   },
   data() {

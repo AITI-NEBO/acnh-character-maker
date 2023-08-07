@@ -25,7 +25,7 @@ export default defineComponent({
   components: { ColorSelector, Slider },
   setup() {
     useMeta({
-      title: 'Eyes',
+      title: 'Глаза',
     });
   },
   data() {
