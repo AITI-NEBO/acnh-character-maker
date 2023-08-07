@@ -11,7 +11,7 @@
     <div class="viewer__avatar">
       <the-character></the-character>
     </div>
-
+<div style="display: flex">
     <button class="btn" type="button" @click="downloadSVGAsPNG">
       {{ downloadText }}
     </button>
@@ -19,10 +19,11 @@
 
       {{setAvatarText}}
     </button>
-    <div v-if="errorMessage" style="color: #ff4757;position: relative; top: 20px;margin-bottom: 15px">
+</div>
+    <div v-if="errorMessage" class="btn" style="background-color: #ff4757;font-size: 16px;text-align: center">
       {{ errorMessage }}
     </div>
-    <div v-if="successMessage" style="background-color: #61bc4e;color: #c3e88d;position: relative; top: 20px;margin-bottom: 15px">
+    <div v-if="successMessage" class="btn" style="background-color: #61bc4e;font-size: 16px;text-align: center">
       {{ successMessage }}
     </div>
 
@@ -94,6 +95,8 @@ export default defineComponent({
       window.scrollTo({
         top: 0,
       });
+      this.successMessage=''
+      this.errorMessage=''
       this.setAvatarText = 'Загрузка...';
       const svg = document.getElementsByClassName(
           'viewer__avatar',
@@ -125,7 +128,7 @@ export default defineComponent({
                     this.setAvatarText = 'Установить аватар в Битрикс24'
                   }
                 })
-                .catch((error:any) => {
+                .catch(() => {
                   this.errorMessage = 'Ошибка при обновлении аватара пользователя'
                   this.setAvatarText = 'Установить аватар в Битрикс24'
                 })
@@ -157,7 +160,7 @@ export default defineComponent({
   @include flex(center, center, column);
   margin: rem(20px);
   @media screen and (min-width: 1024px) {
-    margin: 10vw;
+    margin: 3vw;
   }
   &__credit {
     color: var(--accent-200);
