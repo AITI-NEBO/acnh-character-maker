@@ -1,7 +1,7 @@
 <template>
   <metainfo>
     <template v-slot:title="{ content }">{{
-      content ? `${content} | AC: Character Maker` : "AC: Character Maker"
+      content ? `${content} | AvatarStudio - простой конструктор аватаров для Битрикс24` : "AvatarStudio - простой конструктор аватаров для Битрикс24"
     }}</template>
   </metainfo>
   <main class="main">
@@ -16,7 +16,7 @@ import { useMeta } from 'vue-meta';
 export default defineComponent({
   name: 'App',
   setup() {
-    const title = 'AC: Character Maker';
+    const title = 'AvatarStudio - простой конструктор аватаров для Битрикс24';
 
     useMeta({
       'mobile-web-app-capable': {
