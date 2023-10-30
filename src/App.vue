@@ -1,7 +1,7 @@
 <template>
   <metainfo>
     <template v-slot:title="{ content }">{{
-      content ? `${content} | AvatarStudio - простой конструктор аватаров для Битрикс24` : "AvatarStudio - простой конструктор аватаров для Битрикс24"
+      content ? `${content} от разработчика АЙТИ НЕБО` : "AvatarStudio - простой конструктор аватаров для Битрикс24"
     }}</template>
   </metainfo>
   <main class="main">
